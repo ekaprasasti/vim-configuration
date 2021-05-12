@@ -6,12 +6,20 @@ set number
 set nowrap
 set smartindent
 set incsearch
-set scrolloff=8
 set signcolumn=yes
 set encoding=UTF-8
 
-nnoremap <C-,> :bp<CR>
-nnoremap <C-.> :bn<CR>
+" Start General Vim Shortcut
+  " Split Window
+  nmap ss :split<Return><C-w>w
+  nmap sv :vsplit<Return><C-w>w
+
+  " Move window
+  map sh <C-w>h
+  map sk <C-w>k
+  map sj <C-w>j
+  map sl <C-w>l
+" End General Vim Shortcut
 
 " Start vim-plug
   call plug#begin('~/.vim/plugged')
@@ -30,17 +38,22 @@ nnoremap <C-.> :bn<CR>
     Plug 'airblade/vim-gitgutter'
     Plug 'preservim/nerdcommenter'
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'jiangmiao/auto-pairs'
   call plug#end()
 " End vim-plug
 
 " Start NerdTree
+  let g:NERDTreeGitStatusConcealBrackets = 1
+  let g:NERDTreeGitStatusShowClean = 1
+  let g:NERDTreeShowLineNumbers=1
+  let g:NERDTreeQuitOnOpen=1
+  let NERDTreeShowHidden=1
+
+  nnoremap <C-n> :NERDTree<CR>
   nnoremap <C-b> :NERDTreeToggle<CR>
   nnoremap <C-e> :NERDTreeFind<CR>
-  nnoremap <C-r> :NERDTreeFocus<CR>
   vmap ++ <plug>NERDCommenterToggle
   nmap ++ <plug>NERDCommenterToggle
-
-  au VimEnter * NERDTree | wincmd p
 " End NerdTree
 
 " Start CtrlP
@@ -77,10 +90,6 @@ nnoremap <C-.> :bn<CR>
   let g:airline#extensions#hunks#enabled=0
   let g:airline#extensions#branch#enabled = 1
   let g:airline_powerline_fonts = 1
-
-  let g:NERDTreeGitStatusConcealBrackets = 1
-  let g:NERDTreeGitStatusShowClean = 1
-  let g:NERDTreeShowHidden=1
 " End Styling
 
 " manual installation
